@@ -32,7 +32,7 @@ test('Register User', async ({ page }) => {
 
   // Step 8: Select gender radio button (Mr.)
   const mrRadioButton = page.locator('#id_gender1');
-  await expect(mrRadioButton).toBeVisible();  // Ensures the radio button is visible
+  await expect(mrRadioButton).toBeVisible();  
   await mrRadioButton.check();
 
   const password= page.locator('[data-qa="password"]');
@@ -41,6 +41,29 @@ test('Register User', async ({ page }) => {
     await page.locator('[data-qa="years"]').click('2000');
     await page.locator('[data-qa="months"]').click('August');
     await page.locator('[data-qa="days"]').click('5');
+
+  const NewsLetterCheckbox= page.locator('#newsletter');
+  await expect(NewsLetterCheckbox).toBeVisible;
+  await NewsLetterCheckbox.check();
+
+  const SpecialOffersCheckbox= page.locator('#optin');
+  await expect(SpecialOffersCheckbox).toBeVisible;
+  await SpecialOffersCheckbox.check();
+
+
+  const FirstName= page.locator('[data-qa="first_name"]');
+  await FirstName.fill('David')
+
+  const LastName= page.locator('[data-qa="first_name"]');
+  await LastName.fill('Beckham')
+
+  const Address= page.locator('[data-qa="address"]');
+  await Address.fill('Newyork,street-23')
+
+  const dropdown = await page.locator('#country');  
+  await dropdown.selectOption({ label: 'India' }); 
+
+
 
 
 });

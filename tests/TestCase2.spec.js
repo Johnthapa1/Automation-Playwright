@@ -11,7 +11,7 @@ if (!email || !password) {
   throw new Error('Email or password not defined in datas.json');
 }
 
-test('Builtin Locaters',async({page})=>{
+test('Login User with Correct Username and Password',async({page})=>{
 
     await page.goto('https://automationexercise.com/');
 
@@ -25,6 +25,15 @@ test('Builtin Locaters',async({page})=>{
 
     await page.locator('[data-qa="login-email"]').fill(email)
     await page.locator('[data-qa="login-password"]').fill(password)
+
+    await page.locator('[data-qa="login-button"]').click();
+
+    const logoutButton = page.locator('a:has-text("Delete Account")');
+    await expect(logoutButton).toBeVisible();
+    await logoutButton.click();
+
+    const DeleteConfirmation= page.locator('b:has-text("Account Deleted)');
+    await expect(DeleteConfirmation).toBeVisible
 
 
     

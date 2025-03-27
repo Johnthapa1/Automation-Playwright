@@ -17,17 +17,19 @@ test('Register User', async ({ page }) => {
 
   // Step 5: Enter name and email address for registration
   const nameInput = page.locator('[placeholder="Name"]');
-  await nameInput.fill('ABCTest');
+  const username = 'ABCTest';
+  await nameInput.fill(username);
   
   const emailInput = page.locator('[data-qa="signup-email"]');
-  await emailInput.fill('voiyeddoikipi-5239@yopmail.com');
+  await emailInput.fill('quidduffiwunoi-6126@yopmail.com');
 
   // Step 6: Click the 'Signup' button to proceed
   const signupButton = page.locator('[data-qa="signup-button"]');
   await signupButton.click();
 
   // Step 7: Verify 'ENTER ACCOUNT INFORMATION' is visible
-  const accountInfoTitle = page.locator('b:text("Enter Account Information")');
+  const accountInfoTitle = page.locator('text="Enter Account Information"');
+
   await expect(accountInfoTitle).toBeVisible();
 
   // Step 8: Select gender radio button (Mr.)
@@ -54,7 +56,7 @@ test('Register User', async ({ page }) => {
   const FirstName= page.locator('[data-qa="first_name"]');
   await FirstName.fill('David')
 
-  const LastName= page.locator('[data-qa="first_name"]');
+  const LastName= page.locator('[data-qa="last_name"]');
   await LastName.fill('Beckham')
 
   const Address= page.locator('[data-qa="address"]');
@@ -63,7 +65,32 @@ test('Register User', async ({ page }) => {
   const dropdown = await page.locator('#country');  
   await dropdown.selectOption({ label: 'India' }); 
 
+  const State= page.locator('[data-qa="state"]');
+  await State.fill('Uttar Pradesh')
+  
+  const City= page.locator('[data-qa="city"]');
+  await City.fill('Bihar')
+
+  const Zipcode= page.locator('[data-qa="zipcode"]');
+  await Zipcode.fill('446000')
+
+  const MobileNumber= page.locator('[data-qa="mobile_number"]');
+  await MobileNumber.fill('9876543276')
+
+  const CreateAccount = page.locator('[data-qa="create-account"]');
+  await CreateAccount.click();
 
 
+  const accountCreate = page.locator('b:text("Account Created")');
+  await expect(accountCreate).toBeVisible();
 
+  const ContinueButton = page.locator('[data-qa="continue-button"]');
+  await ContinueButton.click();
+
+  const loggedInText = page.locator('a:has-text("Logged in as")');
+  await expect(loggedInText).toContainText(`Logged in as ${username}`);
+
+  const logoutButton = page.locator('a:has-text("Logout")');
+  await expect(logoutButton).toBeVisible();
+  await logoutButton.click();
 });

@@ -2,14 +2,15 @@
   "name": "playwright-automation",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.50.1",
-    "@types/node": "^22.13.5",
-  "test": "npx playwright test"
+    "@types/node": "^22.13.5"
   }
 }

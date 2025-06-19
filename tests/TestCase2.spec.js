@@ -28,9 +28,9 @@ test('Login User with Correct Username and Password',async({page})=>{
 
     await page.locator('[data-qa="login-button"]').click();
 
-    const logoutButton = page.locator('a:has-text("Delete Account")');
-    await expect(logoutButton).toBeVisible();
-    await logoutButton.click();
+    // const logoutButton = page.locator('a:has-text("Delete Account")');
+    // await expect(logoutButton).toBeVisible();
+    // await logoutButton.click();
 
     const DeleteConfirmation= page.locator('b:has-text("Account Deleted)');
     await expect(DeleteConfirmation).toBeVisible

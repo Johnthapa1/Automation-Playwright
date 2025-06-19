@@ -20,8 +20,13 @@ test('Register User', async ({ page }) => {
   const username = 'ABCTest';
   await nameInput.fill(username);
   
-  const emailInput = page.locator('[data-qa="signup-email"]');
-  await emailInput.fill('quidduffiwunoi-6126@yopmail.com');
+ // Step: Generate random email
+const randomString = Math.random().toString(36).substring(2, 10); // 8 random characters
+const randomEmail = `testuser_${randomString}@yopmail.com`;
+
+// Step: Fill email input
+const emailInput = page.locator('[data-qa="signup-email"]');
+await emailInput.fill(randomEmail);
 
   // Step 6: Click the 'Signup' button to proceed
   const signupButton = page.locator('[data-qa="signup-button"]');

@@ -12,5 +12,9 @@ test('Login User with incorrect email and password',async({page})=>{
     const LoginTitle= page.locator('h2:text("Login to your Account")');
     await expect(LoginTitle).toBeVisible;
 
+    await page.locator('[data-qa="login-email"]').fill("test123@gmail.com")
+    await page.locator('[data-qa="login-password"]').fill("jhsd5325sdb")
+
+    await page.locator('[data-qa="login-button"]').click();
     
 })

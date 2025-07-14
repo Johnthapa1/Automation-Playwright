@@ -6,21 +6,21 @@
 // page.getByTitle() to locate an element by its title attribute.
 // page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
 
-const{test, expect}= require('@playwright/test');
+import { test, expect } from '@playwright/test';
 
-test('Builtin Locaters',async({page})=>{
-
+test('Builtin Locators', async ({ page }) => {
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-    const logo= await page.getByAltText('company-branding')
-    await expect(logo). toBeVisible();
-
-    await page.getByPlaceholder('username').fill('Admin')
-    await page.getByPlaceholder('password').fill('admin123')
-
-    await page.getByRole('button', {type:'submit'}). click()
-
-    const name= await page.locator("//p[@class='oxd-userdropdown-name']").textContent()
-    await expect(await page.getByText(name)).toBeVisible()
     
-})
+    const logo = await page.locator('img[alt="company-branding"]');
+    await expect(logo).toBeVisible();
+
+    await page.locator('input[placeholder="Username"]').fill('Admin');
+    await page.locator('input[placeholder="Password"]').fill('admin123');
+
+    await page.locator('button[type="submit"]').click();
+
+    const name = await page.locator("//p[@class='oxd-userdropdown-name']").textContent();
+    await expect(await page.locator(`text=${name}`)).toBeVisible();
+});
+
 

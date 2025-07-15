@@ -1,7 +1,7 @@
 {
-  "email": "testuser_l7vc4tzignq_1752558911335@yopmail.com",
+  "email": "testuser_s59ghv27bfg_1752559400845@yopmail.com",
   "password": "Admin@123",
-  "username": "TestUser_1752558911335_4800",
+  "username": "TestUser_1752559400845_7837",
   "firstName": "David",
   "lastName": "Beckham",
   "company": "Test Company",
@@ -12,5 +12,5 @@
   "city": "Bihar",
   "zipcode": "446000",
   "mobileNumber": "9876543276",
-  "createdAt": "2025-07-15T05:55:21.560Z"
+  "createdAt": "2025-07-15T06:03:38.125Z"
 }

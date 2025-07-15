@@ -53,12 +53,12 @@ function saveCredentialsToFile(credentials) {
     }
     
     fs.writeFileSync(filePath, JSON.stringify(dataToSave, null, 2));
-    console.log('✅ Credentials saved to datas.json successfully');
-    console.log('📧 Email:', credentials.email);
-    console.log('🔐 Password:', credentials.password);
-    console.log('👤 Username:', credentials.username);
+    console.log('Credentials saved to datas.json successfully');
+    console.log('Email:', credentials.email);
+    console.log('Password:', credentials.password);
+    console.log('Username:', credentials.username);
   } catch (error) {
-    console.error('❌ Error saving credentials:', error);
+    console.error('Error saving credentials:', error);
     throw error;
   }
 }
@@ -68,7 +68,7 @@ test('Register User', async ({ page }) => {
   let retryCount = 0;
   const maxRetries = 3;
   
-  console.log('🚀 Starting signup process with generated credentials...');
+  console.log('Starting signup process with generated credentials...');
   
   // Step 1: Navigate to the homepage
   await page.goto('https://automationexercise.com/');
@@ -108,7 +108,7 @@ test('Register User', async ({ page }) => {
       const emailError = await page.locator('p:text("Email Address already exist!")').isVisible().catch(() => false);
       
       if (emailError) {
-        console.log(`⚠️ Email already exists (attempt ${retryCount + 1}/${maxRetries}), generating new credentials...`);
+        console.log(`Email already exists (attempt ${retryCount + 1}/${maxRetries}), generating new credentials...`);
         credentials = generateTestCredentials();
         retryCount++;
         continue;
@@ -118,7 +118,7 @@ test('Register User', async ({ page }) => {
       break;
       
     } catch (error) {
-      console.log(`❌ Error during signup attempt ${retryCount + 1}:`, error.message);
+      console.log(`Error during signup attempt ${retryCount + 1}:`, error.message);
       if (retryCount === maxRetries - 1) {
         throw error;
       }
@@ -128,7 +128,7 @@ test('Register User', async ({ page }) => {
   }
   
   if (retryCount >= maxRetries) {
-    throw new Error('❌ Max retries exceeded for signup. Unable to create account.');
+    throw new Error('Max retries exceeded for signup. Unable to create account.');
   }
   
   // Step 7: Verify 'ENTER ACCOUNT INFORMATION' is visible
@@ -208,7 +208,7 @@ test('Register User', async ({ page }) => {
   await expect(logoutButton).toBeVisible();
   await logoutButton.click();
   
-  console.log('✅ User registration completed successfully!');
-  console.log('💾 Credentials saved for login test.');
-  console.log('🔄 Ready for login test execution.');
+  console.log('User registration completed successfully!');
+  console.log('Credentials saved for login test.');
+  console.log('Ready for login test execution.');
 });
